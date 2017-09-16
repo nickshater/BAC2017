@@ -26,7 +26,7 @@ import nhl
 NOTE: games are merged in a poor way, but seems to work just fine.
 """
 #iterate over teams/years
-teams = pickle.load(open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'nhl','pickles','dict_names.pickle'),'rb'))
+teams = pickle.load(open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'nhl','pickles','dict_names'),'rb'))
 years = range(2000,2018)
 
 # start loop

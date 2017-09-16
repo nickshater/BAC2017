@@ -57,6 +57,8 @@ for _,row in games.iterrows():
     home_goalies = soup.find("div",{"id":'all_' + home_team + '_goalies'})
     away_skaters = soup.find("div",{"id":'all_' + away_team + '_skaters'})
     away_goalies = soup.find("div",{"id":'all_' + away_team + '_goalies'})
+    if not all([home_skaters,home_goalies,away_skaters,away_goalies]):
+        print("Data missing: " + url)
     
     # get headers
     headers_skaters = home_skaters.find('thead').findAll('tr')[1]
@@ -88,9 +90,8 @@ for _,row in games.iterrows():
 # pandas dataframe cleanup
 progress.close()
 df_skaters = pd.concat(skaters)
-df_goalies = pd.concat(goalies)
-
-df_skaters = df_skaters.sort_values('date')
-df_goalies = df_goalies.sort_values('date')
+df_skaters = df_skaters.sort_values('guid')
 df_skaters = df_skaters.reset_index(drop=True)
+df_goalies = pd.concat(goalies)
+df_goalies = df_goalies.sort_values('guid')
 df_goalies = df_skaters.reset_index(drop=True)

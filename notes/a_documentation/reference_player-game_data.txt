@@ -4,7 +4,7 @@ SKATER DATA
 
 H_R NAME				NEW NAME			NOTES
 new						-> 'guid'			(game uid)
-new						-> 'date'			(game uid)
+new						-> 'date'			
 new						-> 'team'			(abbrev)
 new						-> 'home_away'
 'ranker'				-> [delete] 		(not actually any rank, just alpha order)
@@ -42,4 +42,4 @@ new						-> 'home_away'
 'save_pct'				-> 'save_pct'
 'shutouts'				-> 'shutouts'
 'pen_min'				-> 'pen_min'
-'time_on_ice'			-> 'toi'
+'time_on_ice'			-> 'time_on_ice'
