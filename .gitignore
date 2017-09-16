@@ -1,0 +1,11 @@
+# git ignore file
+# ignores stated file extensions
+# * = only ignore in current folder
+# ** = ignore in all folders
+
+*.pickle
+*.pkl
+**.pickle
+**.pkl
+**/*.pickle
+**/*.pkl

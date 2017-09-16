@@ -1,0 +1,39 @@
+HOCKEY_REFERENCE GAME DATA
+
+(new)				-> 'guid'			('YYYYMMDD' + '0' + home_team)
+'date_game'			-> 'date'
+'time_game'			-> 'time'
+'attendance'		-> 'attendance'
+'game_duration'		-> 'duration'
+'overtimes'			-> 'overtime'
+
+'games'				-> 'home_team'		(swap teams accordingly)
+'opp_name'			-> 'away_team'		(swap teams accordingly)
+'game_outcome'		-> 'winner'			(team_a if W else team_b)
+'game_location'		-> [delete]   		(indicated by 'home_team')
+
+'shots'				-> 'home_shots'		
+'goals' 			-> 'home_goals'
+'goals_pp'			-> 'home_goals_pp'
+'goals_sh'			-> 'home_goals_sh'
+'pen_min'			-> 'home_pen_min'
+'chances_pp'		-> 'home_chances_pp'
+
+'wins'				-> 'home_season_wins'
+'losses'			-> 'home_season_losses'
+'losses_ot'			-> 'home_season_losses_ot'
+'ties'				-> 'home_season_ties'
+'game_streak'		-> 'home_season_streak'
+
+'shots_against'		-> 'away_shots'
+'opp_goals'			-> 'away_goals'
+'goals_against_pp'	-> 'away_goals_pp'
+'goals_against_sh'	-> 'away_goals_sh'
+'pen_min_opp'		-> 'away_pen_min'
+'opp_chances_pp'	-> 'away_chances_pp'
+
+new					-> 'away_season_wins'
+new					-> 'away_season_losses'
+new					-> 'away_season_losses_ot'
+new					-> 'away_season_ties'
+new					-> 'away_season_streak'

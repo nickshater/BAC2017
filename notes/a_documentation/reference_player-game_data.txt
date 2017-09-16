@@ -1,0 +1,45 @@
+HOCKEY_REFERENCE PLAYER-GAME DATA
+
+SKATER DATA
+
+H_R NAME				NEW NAME			NOTES
+new						-> 'guid'			(game uid)
+new						-> 'date'			(game uid)
+new						-> 'team'			(abbrev)
+new						-> 'home_away'
+'ranker'				-> [delete] 		(not actually any rank, just alpha order)
+'player'				-> 'name'
+'goals'					-> 'goals'
+'assists'				-> 'assists'
+'points'				-> 'points'
+'plus_minus'			-> 'plus_minus'
+'pen_min'				-> 'pen_min'
+'goals_ev'				-> 'goals_ev'
+'goals_pp'				-> 'goals_pp'
+'goals_sh'				-> 'goals_sh'
+'goals_gw'				-> 'goals_gw'
+'assists_ev'			-> 'assists_ev'
+'assists_pp'			-> 'assists_pp'
+'assists_sh'			-> 'assists_sh'
+'shots'					-> 'shots'
+'shot_pct'				-> 'shot_pct'
+'shifts'				-> 'shifts'
+'time_on_ice'			-> 'time_on_ice'
+
+GOALIE DATA
+
+H_R NAME				NEW NAME			NOTES
+new						-> 'guid'			(game uid)
+new						-> 'date'			(game uid)
+new						-> 'team'			(abbrev)
+new						-> 'home_away'
+'ranker'				-> [delete]			(not actually any rank, just alpha order)
+'player'				-> 'name'
+'decision'				-> 'decision'
+'goals_against'			-> 'goals_against'
+'shots_against'			-> 'shots_against'
+'saves'					-> 'saves'
+'save_pct'				-> 'save_pct'
+'shutouts'				-> 'shutouts'
+'pen_min'				-> 'pen_min'
+'time_on_ice'			-> 'toi'
