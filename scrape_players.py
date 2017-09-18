@@ -36,8 +36,11 @@ def build_table(html_table,headers,guid,date,team,home_or_away):
 games = pickle.load(open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'nhl','pickles','table_games.pickle'),'rb'))
 skaters = []
 goalies = []
+not_found = []
 progress = tqdm(total = games.shape[0])
+counter = 0
 for _,row in games.iterrows():
+    counter+=1
     progress.update()
     guid = row['guid']
     date = row['date']
@@ -49,6 +52,7 @@ for _,row in games.iterrows():
         url = 'https://www.hockey-reference.com/boxscores/' + row['guid'] + '.html'
         soup = BeautifulSoup(urlopen(url),'lxml')
     except:
+        not_found.append(url)
         print("URL not found: " + url)
         continue
         
@@ -58,6 +62,7 @@ for _,row in games.iterrows():
     away_skaters = soup.find("div",{"id":'all_' + away_team + '_skaters'})
     away_goalies = soup.find("div",{"id":'all_' + away_team + '_goalies'})
     if not all([home_skaters,home_goalies,away_skaters,away_goalies]):
+        not_found.append(url)
         print("Data missing: " + url)
     
     # get headers
@@ -67,9 +72,9 @@ for _,row in games.iterrows():
     headers_goalies = [i['data-stat'].lower() for i in headers_goalies.find_all('th')]
     
     headers_skaters.remove('ranker')
-    headers_skaters = ['team','home_away'] + headers_skaters
+    headers_skaters = ['guid','date','team','home_away'] + headers_skaters
     headers_goalies.remove('ranker')
-    headers_goalies = ['team','home_away'] + headers_goalies    
+    headers_goalies = ['guid','date','team','home_away'] + headers_goalies    
     
     # build dataframes from html
     df_home_skaters = build_table(home_skaters,headers_skaters,guid,date,home_team,'home')
@@ -84,14 +89,24 @@ for _,row in games.iterrows():
     goalies.append(df_away_goalies)
     
     # pause for scraping courtesy
-    time.sleep(0.5*float(random()))
+    #time.sleep(0.5*float(random()))
+    
+    # save every 20 runs
+    if counter%20==0:
+            with open(os.path.join(os.path.dirname(os.path.realpath(__file__)),'nhl','pickles','table_players.pickle'),'wb') as f:
+                pickle.dump(skaters,f)
+                pickle.dump(goalies,f)
+                pickle.dump(not_found,f)
+                pickle.dump(row,f)
 
-
-# pandas dataframe cleanup
+# pandas dataframe cleanup and pickle dump
 progress.close()
 df_skaters = pd.concat(skaters)
 df_skaters = df_skaters.sort_values('guid')
 df_skaters = df_skaters.reset_index(drop=True)
+df_skaters = df_skaters.replace('','NULL')
 df_goalies = pd.concat(goalies)
 df_goalies = df_goalies.sort_values('guid')
 df_goalies = df_skaters.reset_index(drop=True)
+df_goalies = df_goalies.replace('','NULL')
+

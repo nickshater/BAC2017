@@ -1,0 +1,38 @@
+MY SPORTS FEEDS: (API key requested)
+pros:    
+        -API interface(C#,PHP,cURL,JS,J,Node.js,C,C#,Ruby)
+        -xml, json, csv output
+        -has player injury data
+        -has comprehensive in-game data for each player
+        -loaded with examples for every query
+cons:    
+        -costs money
+        -data only goes back to 2007
+        -lacks time on ice per game
+        
+HOCKEY REFERENCE:
+pros:    
+        -complete information including player-game stats
+        -full history of NHL available
+        -free
+        -time on ice per game available
+cons:    
+        -no API available it seems; web scraping required
+
+STATTLESHIP:
+pros:    
+        -primarily built for MLB over NHL
+        -API inteface (Python/R)
+        -demonstrated models exist for neo4j integration
+        -has player salaries
+cons:    
+        -cost money for current season
+        -lacks player-game data
+
+NHL:    
+pros:    
+        -backend acess for JSON/XML
+        -free
+cons:    
+        -lacks comprehensive public data
+        -api's do exist, but are weak or R-wrappers (edited)
